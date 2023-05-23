@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th style="padding: 20px">Name</th>
+        <th style="padding: 20px">Department</th>
+        <th style="padding: 20px">Age</th>
+        <th style="padding: 20px">Salary</th>
+        <th style="padding: 20px">Username</th>
+        <th style="padding: 20px">ROles</th>
+        <th style="padding: 20px">Update</th>
+        <th style="padding: 20px">Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="user : ${users}">
+
+<!--        <a th:href="@{/updateInfo(userId=${user.id})}" id="updateButton"></a>-->
+        <td style="padding: 20px" th:text="${user.name}"></td>
+        <td style="padding: 20px" th:text="${user.department}"></td>
+        <td style="padding: 20px" th:text="${user.age}"></td>
+        <td style="padding: 20px" th:text="${user.salary}"></td>
+        <td style="padding: 20px" th:text="${user.username}"></td>
+        <td style="padding: 20px" th:text="${user.roles}"></td>
+
+        <td>
+        <form th:action="@{/admin/updateInfo}"  th:method="PATCH">
+            <input type="hidden" name="userId" th:value="${user.id}" />
+            <input type="submit" value="Update" />
+        </form>
+        </td>
+        <td>
+            <form th:action="@{/admin/deleteInfo}"  th:method="DELETE">
+                <input type="hidden" name="userId" th:value="${user.id}" />
+                <input type="submit" value="Delete" />
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<br> <br>
+
+<input type="button" value="Add" onclick="window.location.href='/admin/addNewEmployee'"/>
+
+</body>
+</html>
