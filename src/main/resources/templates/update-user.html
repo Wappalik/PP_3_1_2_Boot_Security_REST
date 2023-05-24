@@ -8,21 +8,21 @@
 <h2>Edit User Info</h2>
 <br>
 <form action="saveUser" th:object="${user}" method="POST">
-    <input type="hidden" th:field="*{id}" />
+    <input type="hidden" th:field="*{id}"/>
     <label>Name:</label>
-    <input type="text" th:field="*{name}" />
+    <input type="text" th:field="*{name}"/>
     <span th:errors="*{name}"></span>
     <br>
     <label>Department:</label>
-    <input type="text" th:field="*{department}" />
+    <input type="text" th:field="*{department}"/>
     <span th:errors="*{department}"></span>
     <br>
     <label>Age:</label>
-    <input type="text" th:field="*{age}" />
+    <input type="text" th:field="*{age}"/>
     <span th:errors="*{age}"></span>
     <br>
     <label>Salary:</label>
-    <input type="text" th:field="*{salary}" />
+    <input type="text" th:field="*{salary}"/>
     <span th:errors="*{salary}"></span>
     <br> <br>
     <label>password</label>
@@ -33,11 +33,11 @@
     <input type="text" th:field="*{username}">
     <span th:errors="*{username}"></span>
     <br><br>
-      <label>Roles</label>
-      <select th:field="*{roles}" multiple>
-          <option th:each="role : ${rolesList}" th:value="${role.id}" th:text="${role.name}"></option>
-      </select>
-      <br><br><br>
+    <label>Roles</label>
+    <select th:field="*{roles}" multiple>
+        <option th:each="role : ${rolesList}" th:value="${role.id}" th:text="${role.name}"></option>
+    </select>
+    <br><br><br>
     <input type="submit" value="OK">
 </form>
 </body>

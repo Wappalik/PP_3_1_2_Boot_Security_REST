@@ -35,7 +35,8 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional(readOnly = true)
     public List<User> getAllUsers() {
-        return userDao.getAllUsers();
+//        return userDao.getAllUsers();
+        return userRepository.findAll();
     }
 
     @Override
@@ -43,25 +44,28 @@ public class UserServiceImpl implements UserService {
     public void saveUser(User user) {
 //        user.setRoles(Collections.singleton(roleRepository.getById(1L)));
         user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
-        userDao.saveUser(user);
+//        userDao.saveUser(user);
+        userRepository.save(user);
     }
 
     @Override
     @Transactional
     public User getUserById(int id) {
-        return userDao.getUserById(id);
+//        return userDao.getUserById(id);
+        return userRepository.getById(Long.valueOf(id));
     }
 
     @Override
     @Transactional
     public void deleteEmployee(int id) {
-        userDao.deleteEmployee(id);
+//        userDao.deleteEmployee(id);
+        userRepository.deleteById(Long.valueOf(id));
     }
 
-    @Override
-    public User getUserByName(String username) {
-        return userDao.getUserByName(username);
-    }
+//    @Override
+//    public User getUserByName(String username) {
+//        return userDao.getUserByName(username);
+//    }
 
 //    @Query("Select u from User u left join fetch u.roles where u.username=:username")
     public User findByUsername(String username) {
@@ -76,12 +80,11 @@ public class UserServiceImpl implements UserService {
         if (user == null) {
             throw  new UsernameNotFoundException(String.format("User '%s' not found",username));
         }
-        return new org.springframework.security.core.userdetails.User(user.getUsername(),user.getPassword(),
-                true,true,true,true,mapRolesAuthorities(user.getRoles()));
+        return user;
     }
 
-    private Collection <? extends GrantedAuthority>mapRolesAuthorities (Collection<Role> roles) {
-
-        return roles.stream().map(a-> new SimpleGrantedAuthority(a.getName())).collect(Collectors.toList());
-    }
+//    private Collection <? extends GrantedAuthority>mapRolesAuthorities (Collection<Role> roles) {
+//
+//        return roles.stream().map(a-> new SimpleGrantedAuthority(a.getName())).collect(Collectors.toList());
+//    }
 }
