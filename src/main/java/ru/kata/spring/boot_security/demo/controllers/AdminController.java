@@ -34,12 +34,12 @@ public class AdminController {
 
     @GetMapping("/addNewEmployee")
     public String addNewUser(Model model) {
-//        List<Role> list = new ArrayList<>();
         User user = new User();
-//        list.add(roleRepository.getById(1L));
-//        list.add(roleRepository.getById(2L));
+        Collection <Role> list = new ArrayList<>();
+        list.add(roleRepository.getById(1L));
+        list.add(roleRepository.getById(2L));
         model.addAttribute("user", user);
-//        model.addAttribute("rolesList", list);
+        model.addAttribute("rolesList", list);
         return "user-info";
     }
 
@@ -57,8 +57,12 @@ public class AdminController {
     public String updateUser(@RequestParam("userId") int id, Model model) {
 
         User user = service.getUserById(id);
+        Collection <Role> list = new ArrayList<>();
+        list.add(roleRepository.getById(1L));
+        list.add(roleRepository.getById(2L));
         model.addAttribute("user", user);
-        return "user-info";
+        model.addAttribute("rolesList", list);
+        return "update-user";
     }
 
     @DeleteMapping("/deleteInfo")

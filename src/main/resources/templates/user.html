@@ -6,22 +6,24 @@
 <body>
 <h1></h1>
 
-Hello
+Hello User, there is your info
+<br> <br>
 <form th:object="${aloneUser}">
-<h1 th:text="${aloneUser.name}"></h1>
+Your Name: <h2 th:text="${aloneUser.name}"></h2>
 <br><br>
-<h1 th:text="${aloneUser.age}"></h1>
+Your Age: <h2 th:text="${aloneUser.age}"></h2>
 <br><br>
-<h1 th:text="${aloneUser.department}"></h1>
+Department: <h2 th:text="${aloneUser.department}"></h2>
 <br><br>
-<h1 th:text="${aloneUser.username}"></h1>
+Your Username: <h2 th:text="${aloneUser.username}"></h2>
 <br><br>
-<h1 th:text="${aloneUser.roles}"></h1>
+Your roles: <h2 th:text="${aloneUser.roles}"></h2>
 <br><br>
-<h1 th:text="${aloneUser.salary}"></h1>
+Your salary<h2 th:text="${aloneUser.salary}"></h2>
 <br><br>
 </form>
 <br><br>
 <input type="button" value="Logout" onclick="window.location.href='logout'">
+<input type="button" value="Ref for admin" onclick="window.location.href= '/admin'">
 </body>
 </html>

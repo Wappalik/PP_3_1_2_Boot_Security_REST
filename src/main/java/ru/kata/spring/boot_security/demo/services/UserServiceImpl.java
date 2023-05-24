@@ -41,7 +41,7 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional
     public void saveUser(User user) {
-        user.setRoles(Collections.singleton(roleRepository.getById(1L)));
+//        user.setRoles(Collections.singleton(roleRepository.getById(1L)));
         user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
         userDao.saveUser(user);
     }

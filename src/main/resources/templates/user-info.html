@@ -33,11 +33,11 @@
   <input type="text" th:field="*{username}">
   <span th:errors="*{username}"></span>
   <br><br>
-<!--  <label>Roles</label>-->
-<!--  <select th:field="*{roles}" multiple>-->
-<!--    <option th:each="role : ${rolesList}" th:value="${role.name}" th:text="${role.name}"></option>-->
-<!--  </select>-->
-<!--  <br><br><br>-->
+  <label>Roles</label>
+  <select th:field="*{roles}" multiple>
+    <option th:each="role : ${rolesList}" th:value="${role.id}" th:text="${role.name}"></option>
+  </select>
+  <br><br><br>
   <input type="submit" value="OK">
 </form>
 </body>
