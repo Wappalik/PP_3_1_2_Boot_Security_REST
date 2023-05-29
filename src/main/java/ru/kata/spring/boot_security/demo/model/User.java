@@ -20,23 +20,23 @@ public class User implements UserDetails{
     private Long id;
 
     @Column (name = "name")
-    @NotBlank(message = "should not be empty")
-    @Size(min = 2, message = "min 2 symbols")
-    @Pattern(regexp = "[^\\d]+", message = "should not be a number")
-    @Pattern(regexp = "\\p{L}+", message = "should not be symbol")
+//    @NotBlank(message = "should not be empty")
+//    @Size(min = 2, message = "min 2 symbols")
+//    @Pattern(regexp = "[^\\d]+", message = "should not be a number")
+//    @Pattern(regexp = "\\p{L}+", message = "should not be symbol")
     private String name;
 
     @Column (name = "department")
-    @NotBlank(message = "should not be empty")
+//    @NotBlank(message = "should not be empty")
     private String department;
 
     @Column (name = "age")
-    @Min(value = 18, message = "min is 18")
-    @Max(value = 60, message = "max is 60")
+//    @Min(value = 18, message = "min is 18")
+//    @Max(value = 60, message = "max is 60")
     private long age;
 
     @Column (name = "salary")
-    @Min (value = 500, message = "min salary is begin from 500")
+//    @Min (value = 500, message = "min salary is begin from 500")
     private long salary;
 
     @Column (name = "username")

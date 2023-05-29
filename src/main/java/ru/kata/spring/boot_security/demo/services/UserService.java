@@ -13,6 +13,6 @@ public interface UserService extends UserDetailsService {
     void saveUser (User user);
     User getUserById(int id);
     public void deleteEmployee (int id);
-
+    void updateUser (User user);
     public User findByUsername(String username);
 }

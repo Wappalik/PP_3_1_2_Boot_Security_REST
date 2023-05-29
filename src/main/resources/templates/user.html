@@ -1,29 +1,153 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3" lang="ru">
 <head>
     <title>Spring Security Example</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        #table-container {
+            flex-grow: 1;
+        }
+
+        table {
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+        }
+    </style>
+    <style>
+        /* Скрыть таблицу по умолчанию */
+        .table-container table {
+            display: none;
+        }
+
+        /* Отображать таблицу при активации */
+        .table-container.active table {
+            display: table;
+        }
+    </style>
+    <style>
+        /* Стиль для активной ссылки */
+        .list-group-item.active {
+            background-color: blue;
+            color: white;
+        }
+    </style>
+    <style>
+        .custom-navbar {
+            background-color: darkslategray;
+            color: white;
+        }
+    </style>
+    <style>
+        .sidebar {
+            width: 200px; /* Ширина левой панели */
+            background-color: #f1f1f1; /* Цвет фона левой панели */
+            /* Дополнительные стили, например, отступы, рамки и прочее */
+        }
+
+        .content {
+            /* Стили для основного содержимого страницы */
+        }
+    </style>
+    <style>
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0px;
+        }
+
+        #sidebar-wrapper {
+            height: 100vh; /* Задаем высоту панели равную 100% высоты окна браузера */
+        }
+    </style>
+    <style>
+        #wrapper {
+            display: flex;
+            flex-direction: row;
+        }
+
+        #page-content-wrapper {
+            flex-grow: 1;
+            padding: 20px; /* Добавьте отступы по вашему выбору */
+            background-color: white /* Цвет фона правой части */
+        }
+    </style>
+
 </head>
 <body>
-<h1></h1>
 
-Hello User, there is your info
-<br> <br>
-<form th:object="${aloneUser}">
-Your Name: <h2 th:text="${aloneUser.name}"></h2>
-<br><br>
-Your Age: <h2 th:text="${aloneUser.age}"></h2>
-<br><br>
-Department: <h2 th:text="${aloneUser.department}"></h2>
-<br><br>
-Your Username: <h2 th:text="${aloneUser.username}"></h2>
-<br><br>
-Your roles: <h2 th:text="${aloneUser.roles}"></h2>
-<br><br>
-Your salary<h2 th:text="${aloneUser.salary}"></h2>
-<br><br>
-</form>
-<br><br>
-<input type="button" value="Logout" onclick="window.location.href='logout'">
-<input type="button" value="Ref for admin" onclick="window.location.href= '/admin'">
+<nav class="navbar navbar-expand-lg custom-navbar">
+    <span class="navbar-brand" th:text="${aloneUser.username}" style="display: inline"></span> with roles:
+    <span th:each="role : ${aloneUser.roles}" style="display: inline; vertical-align: middle;">
+  <span th:text="${role.name}"></span>
+  <span style="white-space: pre;"> </span>
+</span>
+    <button class="btn btn-primary ml-auto" onclick="window.location.href='logout'">Logout</button>
+</nav>
+
+
+<div class="d-flex" id="wrapper">
+    <!-- Левая панель -->
+    <div class="bg-light border-right" id="sidebar-wrapper">
+        <div class="list-group list-group-flush">
+            <a href="#" class="list-group-item list-group-item-action" onclick="toggleTable(this)">User</a>
+        </div>
+    </div>
+
+    <!-- Остальное содержимое -->
+    <div id="page-content-wrapper">
+        <div class="container-fluid">
+            <h2>User information-page</h2>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">About User</h3>
+                </div>
+
+                <div class="panel-body table-container">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Department</th>
+                            <th>Age</th>
+                            <th>Salary</th>
+                            <th>Username</th>
+                            <th>Role</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td th:text="${aloneUser2.name}"></td>
+                            <td  th:text="${aloneUser2.department}"></td>
+                            <td th:text="${aloneUser2.age}"></td>
+                            <td th:text="${aloneUser2.salary}"></td>
+                            <td th:text="${aloneUser2.username}"></td>
+                            <td>
+                                <span th:each="role : ${aloneUser2.roles}">
+                                    <span th:text="${role.name}"></span><span></span></span>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function toggleTable(link) {
+        var tableContainer = document.querySelector('.table-container');
+        var userLink = document.querySelector('.list-group-item');
+        tableContainer.classList.toggle('active');
+        userLink.classList.toggle('active');
+    }
+</script>
 </body>
 </html>
