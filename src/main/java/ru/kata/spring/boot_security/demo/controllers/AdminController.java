@@ -52,7 +52,7 @@ public class AdminController {
 //        //обновление юзера
 //        User user2 = service.getUserById(id);
 //        model.addAttribute("user2", user2);
-        return "all-users5";
+        return "adminPage";
     }
 
 
