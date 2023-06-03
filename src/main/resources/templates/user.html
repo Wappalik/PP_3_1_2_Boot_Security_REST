@@ -113,21 +113,21 @@
                     <table>
                         <thead>
                         <tr>
-                            <th>Name</th>
-                            <th>Department</th>
+                            <th>ID</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
                             <th>Age</th>
-                            <th>Salary</th>
-                            <th>Username</th>
+                            <th>Email</th>
                             <th>Role</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr>
-                            <td th:text="${aloneUser2.name}"></td>
-                            <td  th:text="${aloneUser2.department}"></td>
+                            <td th:text="${aloneUser2.id}"></td>
+                            <td  th:text="${aloneUser2.name}"></td>
+                            <td th:text="${aloneUser2.lastName}"></td>
                             <td th:text="${aloneUser2.age}"></td>
-                            <td th:text="${aloneUser2.salary}"></td>
-                            <td th:text="${aloneUser2.username}"></td>
+                            <td th:text="${aloneUser2.email}"></td>
                             <td>
                                 <span th:each="role : ${aloneUser2.roles}">
                                     <span th:text="${role.name}"></span><span></span></span>

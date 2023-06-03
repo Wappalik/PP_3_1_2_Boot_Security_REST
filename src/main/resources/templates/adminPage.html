@@ -235,7 +235,7 @@
                         <td>${user.lastName}</td>
                         <td>${user.age}</td>
                         <td>${user.email}</td>
-                        <td>${user.roles.map(r => r.role.substring(5))}</td>
+                        <td>${user.roles.map(r => r.name)}</td>
                         <td>
                             <button type="button" class="btn btn-info text-white" data-bs-toggle="modal"
                             onclick="showEditModal(${user.id})">Edit</button>
@@ -361,7 +361,7 @@
   function fillRoles(form) {
     roleList.forEach(role => {
       let option = `<option value="${role.id}">
-                                 ${role.roleName}
+                                 ${role.name}
                             </option>`
       $(`[name="roles"]`, form).append(option)
     })

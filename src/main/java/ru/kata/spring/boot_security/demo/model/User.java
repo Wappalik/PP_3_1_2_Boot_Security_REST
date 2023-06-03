@@ -11,7 +11,8 @@ import java.util.stream.Collectors;
 
 @Entity
 @Table(name = "users")
-public class User implements UserDetails{
+public class User implements UserDetails {
+
     @Transient
     @JsonIgnore
     private HibernateProxy hibernateLazyInitializer;
@@ -24,7 +25,7 @@ public class User implements UserDetails{
     @Column(name = "name")
     private String name;
 
-    @Column(name = "lastName")
+    @Column(name = "last_name")
     private String lastName;
 
     @Column(name = "age")
@@ -126,6 +127,20 @@ public class User implements UserDetails{
         this.roles = roles;
     }
 
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", age=" + age +
+                ", email='" + email + '\'' +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", roles=" + roles +
+                '}';
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
