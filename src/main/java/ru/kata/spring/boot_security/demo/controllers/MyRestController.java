@@ -15,16 +15,13 @@ import java.util.List;
 @RestController
 @RequestMapping("/api")
 public class MyRestController {
-    @RestController
-    @RequestMapping("/api")
-    public class RestApiController {
 
         private final UserService userService;
         private final RoleRepository roleRepository;
 
 
         @Autowired
-        public RestApiController(UserService userService, RoleRepository roleRepository) {
+        public MyRestController(UserService userService, RoleRepository roleRepository) {
             this.userService = userService;
             this.roleRepository = roleRepository;
         }
@@ -65,4 +62,4 @@ public class MyRestController {
             return ResponseEntity.ok(HttpStatus.OK);
         }
     }
-}
+
